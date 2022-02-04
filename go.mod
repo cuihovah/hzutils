@@ -1,3 +1,3 @@
-module gitee.com/LoveRain/infra/hzutils
+module gitee.com/hzutils
 
 go 1.16
