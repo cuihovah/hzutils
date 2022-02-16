@@ -2,6 +2,17 @@ package hzutils
 
 import "reflect"
 
+func Flatten(list interface{}) []interface{} {
+	ret := make([]interface{}, 0)
+	for i := 0; i < reflect.ValueOf(list).Len(); i++ {
+		data := reflect.ValueOf(list).Index(i).Interface()
+		for j := 0; j < reflect.ValueOf(data).Len(); j++ {
+			ret = append(ret, reflect.ValueOf(data).Index(j).Interface())
+		}
+	}
+	return ret
+}
+
 func Uniq(list interface{}, fn func(interface{})interface{}) []interface{} {
 	dict := make(map[interface{}]interface{})
 	for i := 0; i < reflect.ValueOf(list).Len(); i++ {
